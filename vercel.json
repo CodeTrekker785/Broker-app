@@ -1,7 +1,7 @@
 {
   "functions": {
     "api/*.js": {
-      "runtime": "@vercel/node@3"
-    }
+      "runtime": "php@1.0.0`."
+  
   }
 }
