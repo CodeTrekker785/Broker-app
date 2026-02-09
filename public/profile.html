@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile | Broker App</title>
+    <style>
+        :root {
+            --bg: #0f172a;
+            --card-bg: #1e293b;
+            --accent: #38bdf8;
+            --text-main: #f8fafc;
+            --text-dim: #94a3b8;
+            --danger: #ef4444;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background: var(--bg);
+            color: var(--text-main);
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .card {
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 24px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        .avatar {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--accent), #818cf8);
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--bg);
+        }
+
+        h2 {
+            margin: 0 0 5px 0;
+            font-size: 1.5rem;
+        }
+
+        .join-date {
+            color: var(--text-dim);
+            font-size: 0.85rem;
+            margin-bottom: 30px;
+        }
+
+        .info-list {
+            text-align: left;
+            background: rgba(0,0,0,0.2);
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 30px;
+        }
+
+        .info-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .info-item:last-child { border: none; }
+
+        .label { color: var(--text-dim); font-size: 0.9rem; }
+        .value { font-weight: 500; }
+
+        .btn-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .btn {
+            padding: 12px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: 0.2s;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-back {
+            background: rgba(255,255,255,0.05);
+            color: var(--text-main);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .btn-logout {
+            background: transparent;
+            color: var(--danger);
+        }
+
+        .btn:hover {
+            transform: translateY(-1px);
+            background: rgba(255,255,255,0.1);
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <div id="avatar" class="avatar">?</div>
+    <h2 id="displayName">Username</h2>
+    <div class="join-date" id="joinDate">Member since ...</div>
+
+    <div class="info-list">
+        <div class="info-item">
+            <span class="label">Account Status</span>
+            <span class="value" style="color: var(--accent)">Verified</span>
+        </div>
+        <div class="info-item">
+            <span class="label">Currency</span>
+            <span class="value">dollars ($)</span>
+        </div>
+    </div>
+
+    <div class="btn-group">
+        <a href="dashboard.html" class="btn btn-back">Back to Dashboard</a>
+        <button class="btn btn-logout" onclick="logout()">Logout</button>
+    </div>
+</div>
+
+<script>
+    // Safe data retrieval
+    try {
+        const u = JSON.parse(localStorage.user);
+        
+        document.getElementById("displayName").innerText = u.username;
+        document.getElementById("joinDate").innerText = `Member since ${u.joined || '2024'}`;
+        document.getElementById("avatar").innerText = u.username.charAt(0).toUpperCase();
+    } catch (e) {
+        location.href = 'login.html';
+    }
+
+    function logout() {
+        if(confirm("Are you sure you want to logout?")) {
+            localStorage.clear();
+            location.href = 'login.html';
+        }
+    }
+</script>
+
+</body>
+</html>
