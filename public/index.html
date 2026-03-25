@@ -17,7 +17,6 @@
         body {
             font-family: 'Inter', system-ui, -apple-system, sans-serif;
             background-color: var(--bg);
-            /* Subtle geometric pattern background */
             background-image: 
                 radial-gradient(at 0% 0%, hsla(213,77%,14%,1) 0, transparent 50%), 
                 radial-gradient(at 50% 0%, hsla(202,80%,18%,1) 0, transparent 50%);
@@ -42,7 +41,6 @@
             position: relative;
         }
 
-        /* Decorative "Market Line" Graphic */
         .card::before {
             content: "";
             position: absolute;
@@ -132,15 +130,41 @@
     <p>Securely trade stocks, crypto, and forex with institutional-grade tools.</p>
 
     <div class="btn-stack">
-        <button class="btn-register" onclick="location='register.html'">Get Started</button>
-        <button class="btn-login" onclick="location='login.html'">Sign In to Account</button>
+        <button class="btn-register" onclick="showRegister()">Get Started</button>
+        <button class="btn-login" onclick="showLogin()">Sign In to Account</button>
     </div>
 
     <div class="trust-badge">
-        <svg width="12" height="12" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
         Bank-Level Security
     </div>
 </div>
+
+<!-- Supabase JS -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+
+<script>
+  // 🔥 Supabase connection
+  const supabaseUrl = "https://dcmcgfbnmvryhbpbaiht.supabase.co";
+  const supabaseKey = "sb_publishable_h2Z8VZECeSGo22L3J1Dy2w_IX68S8oj";
+  const supabase = supabase.createClient(supabaseUrl, supabaseKey);
+
+  // Navigation / simple form placeholders
+  function showRegister() {
+      window.location.href = "register.html"; // or open register form here
+  }
+
+  function showLogin() {
+      window.location.href = "login.html"; // or open login form here
+  }
+
+  // Optional test connection
+  async function testSupabase() {
+      const { data, error } = await supabase.auth.getSession();
+      console.log("Supabase connected:", data, error);
+  }
+
+  testSupabase();
+</script>
 
 </body>
 </html>
