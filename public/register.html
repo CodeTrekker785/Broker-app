@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sign Up | Broker App</title>
+
+<!-- Supabase JS -->
 <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
 <script>
   const supabase = supabase.createClient(
@@ -8,121 +13,119 @@
     "sb_publishable_ENBbvSdHO-TjkiKcakQ_Lw_4ikAEf7K"
   );
 </script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up | Broker App</title>
-    <style>
-        :root {
-            --bg: #0f172a;
-            --card-bg: #1e293b;
-            --accent: #38bdf8;
-            --text-main: #f8fafc;
-            --text-dim: #94a3b8;
-        }
 
-        body {
-            font-family: 'Inter', system-ui, sans-serif;
-            background: radial-gradient(circle at top left, #1e293b, #0f172a);
-            color: var(--text-main);
-            margin: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-        }
+<style>
+:root {
+    --bg: #0f172a;
+    --card-bg: #1e293b;
+    --accent: #38bdf8;
+    --text-main: #f8fafc;
+    --text-dim: #94a3b8;
+}
 
-        .card {
-            background: var(--card-bg);
-            padding: 40px;
-            border-radius: 24px;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            width: 100%;
-            max-width: 400px;
-        }
+body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background: radial-gradient(circle at top left, #1e293b, #0f172a);
+    color: var(--text-main);
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
 
-        h2 {
-            margin: 0 0 10px 0;
-            font-size: 1.8rem;
-            font-weight: 700;
-            background: linear-gradient(to right, #38bdf8, #818cf8);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+.card {
+    background: var(--card-bg);
+    padding: 40px;
+    border-radius: 24px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    width: 100%;
+    max-width: 400px;
+}
 
-        p.subtitle {
-            color: var(--text-dim);
-            font-size: 0.9rem;
-            margin-bottom: 25px;
-        }
+h2 {
+    margin: 0 0 10px 0;
+    font-size: 1.8rem;
+    font-weight: 700;
+    background: linear-gradient(to right, #38bdf8, #818cf8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
 
-        .input-group {
-            margin-bottom: 15px;
-        }
+p.subtitle {
+    color: var(--text-dim);
+    font-size: 0.9rem;
+    margin-bottom: 25px;
+}
 
-        input[type="text"], input[type="password"] {
-            width: 100%;
-            background: #0f172a;
-            border: 1px solid #334155;
-            color: white;
-            padding: 14px 16px;
-            border-radius: 12px;
-            box-sizing: border-box;
-            outline: none;
-            transition: border-color 0.2s;
-        }
+.input-group {
+    margin-bottom: 15px;
+}
 
-        input:focus {
-            border-color: var(--accent);
-        }
+input[type="text"], input[type="password"] {
+    width: 100%;
+    background: #0f172a;
+    border: 1px solid #334155;
+    color: white;
+    padding: 14px 16px;
+    border-radius: 12px;
+    box-sizing: border-box;
+    outline: none;
+    transition: border-color 0.2s;
+}
 
-        .terms {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 0.85rem;
-            color: var(--text-dim);
-            margin: 20px 0;
-            cursor: pointer;
-        }
+input:focus {
+    border-color: var(--accent);
+}
 
-        button {
-            width: 100%;
-            padding: 14px;
-            background: var(--accent);
-            color: #0f172a;
-            border: none;
-            border-radius: 12px;
-            font-size: 1rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
+.terms {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.85rem;
+    color: var(--text-dim);
+    margin: 20px 0;
+    cursor: pointer;
+}
 
-        button:hover {
-            opacity: 0.9;
-            transform: translateY(-1px);
-        }
+button {
+    width: 100%;
+    padding: 14px;
+    background: var(--accent);
+    color: #0f172a;
+    border: none;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+}
 
-        button:disabled {
-            background: #334155;
-            color: #94a3b8;
-            cursor: not-allowed;
-        }
+button:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
 
-        .footer-text {
-            text-align: center;
-            margin-top: 25px;
-            font-size: 0.9rem;
-            color: var(--text-dim);
-        }
+button:disabled {
+    background: #334155;
+    color: #94a3b8;
+    cursor: not-allowed;
+}
 
-        .footer-text a {
-            color: var(--accent);
-            text-decoration: none;
-            font-weight: 600;
-        }
-    </style>
+.footer-text {
+    text-align: center;
+    margin-top: 25px;
+    font-size: 0.9rem;
+    color: var(--text-dim);
+}
+
+.footer-text a {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 600;
+}
+</style>
 </head>
 <body>
 
@@ -131,7 +134,7 @@
   <p class="subtitle">Join thousands of traders worldwide.</p>
 
   <div class="input-group">
-    <input id="user" type="text" placeholder="Choose Username">
+    <input id="user" type="text" placeholder="Email">
   </div>
   
   <div class="input-group">
@@ -151,37 +154,38 @@
 </div>
 
 <script>
-function register() {
-  const user = document.getElementById("user").value;
-  const pass = document.getElementById("pass").value;
+async function register() {
+  const email = document.getElementById("user").value;
+  const password = document.getElementById("pass").value;
   const agree = document.getElementById("agree").checked;
   const btn = document.getElementById("regBtn");
 
-  if (!user || !pass) return alert("Please fill all fields");
+  if (!email || !password) return alert("Please fill all fields");
   if (!agree) return alert("Please agree to the terms");
 
   btn.innerText = "Creating account...";
   btn.disabled = true;
 
-  fetch("/api/register", {
-    method: "POST",
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ username: user, password: pass })
-  })
-  .then(r => {
-      if(r.ok) {
-          location.href = "login.html";
-      } else {
-          alert("Registration failed. User might already exist.");
-          btn.innerText = "Get Started";
-          btn.disabled = false;
-      }
-  })
-  .catch(err => {
-      console.error(err);
+  try {
+    const { data, error } = await supabase.auth.signUp({
+      email: email,
+      password: password
+    });
+
+    if (error) {
+      alert("Registration failed: " + error.message);
       btn.innerText = "Get Started";
       btn.disabled = false;
-  });
+    } else {
+      alert("Account created! Please check your email to confirm.");
+      location.href = "login.html";
+    }
+  } catch (err) {
+    console.error(err);
+    alert("An error occurred. Try again.");
+    btn.innerText = "Get Started";
+    btn.disabled = false;
+  }
 }
 </script>
 
