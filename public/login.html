@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login | Secure Terminal</title>
+
+<!-- Supabase JS -->
 <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
 <script>
   const supabase = supabase.createClient(
@@ -8,122 +13,119 @@
     "sb_publishable_ENBbvSdHO-TjkiKcakQ_Lw_4ikAEf7K"
   );
 </script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login | Secure Terminal</title>
-    <style>
-        :root {
-            --bg: #0b0e14;
-            --card: #161a1e;
-            --accent: #00ff88; /* Trading green */
-            --text: #eaecef;
-            --input-bg: #1e2329;
-        }
 
-        body {
-            font-family: 'Inter', -apple-system, sans-serif;
-            background-color: var(--bg);
-            color: var(--text);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            margin: 0;
-            overflow: hidden;
-        }
+<style>
+:root {
+    --bg: #0b0e14;
+    --card: #161a1e;
+    --accent: #00ff88;
+    --text: #eaecef;
+    --input-bg: #1e2329;
+}
 
-        /* Subtle background glow */
-        body::after {
-            content: '';
-            position: absolute;
-            width: 300px;
-            height: 300px;
-            background: var(--accent);
-            filter: blur(150px);
-            opacity: 0.05;
-            z-index: -1;
-        }
+body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+}
 
-        .card {
-            background: var(--card);
-            padding: 40px;
-            border-radius: 16px;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.5);
-            width: 100%;
-            max-width: 360px;
-            border: 1px solid rgba(255,255,255,0.05);
-            text-align: center;
-        }
+body::after {
+    content: '';
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: var(--accent);
+    filter: blur(150px);
+    opacity: 0.05;
+    z-index: -1;
+}
 
-        h2 {
-            margin-bottom: 24px;
-            font-weight: 600;
-            letter-spacing: -0.5px;
-        }
+.card {
+    background: var(--card);
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+    width: 100%;
+    max-width: 360px;
+    border: 1px solid rgba(255,255,255,0.05);
+    text-align: center;
+}
 
-        .input-group {
-            margin-bottom: 16px;
-            text-align: left;
-        }
+h2 {
+    margin-bottom: 24px;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+}
 
-        input {
-            width: 100%;
-            background: var(--input-bg);
-            border: 1px solid transparent;
-            padding: 14px;
-            border-radius: 8px;
-            color: white;
-            box-sizing: border-box;
-            font-size: 14px;
-            transition: all 0.2s ease;
-        }
+.input-group {
+    margin-bottom: 16px;
+    text-align: left;
+}
 
-        input:focus {
-            outline: none;
-            border-color: var(--accent);
-            background: #2b3139;
-        }
+input {
+    width: 100%;
+    background: var(--input-bg);
+    border: 1px solid transparent;
+    padding: 14px;
+    border-radius: 8px;
+    color: white;
+    box-sizing: border-box;
+    font-size: 14px;
+    transition: all 0.2s ease;
+}
 
-        button {
-            width: 100%;
-            padding: 14px;
-            background: var(--accent);
-            color: #000;
-            border: none;
-            border-radius: 8px;
-            font-weight: 700;
-            font-size: 15px;
-            cursor: pointer;
-            margin-top: 10px;
-            transition: transform 0.1s, opacity 0.2s;
-        }
+input:focus {
+    outline: none;
+    border-color: var(--accent);
+    background: #2b3139;
+}
 
-        button:hover {
-            opacity: 0.9;
-        }
+button {
+    width: 100%;
+    padding: 14px;
+    background: var(--accent);
+    color: #000;
+    border: none;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 15px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: transform 0.1s, opacity 0.2s;
+}
 
-        button:active {
-            transform: scale(0.98);
-        }
+button:hover {
+    opacity: 0.9;
+}
 
-        .footer {
-            margin-top: 20px;
-            font-size: 13px;
-            color: #909399;
-        }
+button:active {
+    transform: scale(0.98);
+}
 
-        .footer a {
-            color: var(--accent);
-            text-decoration: none;
-        }
-    </style>
+.footer {
+    margin-top: 20px;
+    font-size: 13px;
+    color: #909399;
+}
+
+.footer a {
+    color: var(--accent);
+    text-decoration: none;
+}
+</style>
 </head>
 <body>
 
 <div class="card">
     <h2>Login</h2>
     <div class="input-group">
-        <input id="u" placeholder="Username" spellcheck="false">
+        <input id="u" placeholder="Email" spellcheck="false">
     </div>
     <div class="input-group">
         <input id="p" type="password" placeholder="Password">
@@ -136,39 +138,38 @@
 </div>
 
 <script>
-function login() {
+async function login() {
     const btn = document.getElementById("loginBtn");
-    const u = document.getElementById("u").value;
-    const p = document.getElementById("p").value;
+    const email = document.getElementById("u").value;
+    const password = document.getElementById("p").value;
 
-    if (!u || !p) return alert("Please enter credentials");
+    if (!email || !password) return alert("Please enter email and password");
 
-    // UI feedback
     btn.innerHTML = "Processing...";
     btn.disabled = true;
 
-    fetch("/api/login", {
-        method: "POST",
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username: u, password: p })
-    })
-    .then(r => r.json())
-    .then(d => {
-        if (d.success) {
-            localStorage.user = JSON.stringify(d.user);
-            location.href = 'dashboard.html';
-        } else {
-            alert("Invalid username or password");
+    try {
+        const { data, error } = await supabase.auth.signInWithPassword({
+            email: email,
+            password: password
+        });
+
+        if (error) {
+            alert("Login failed: " + error.message);
             btn.innerHTML = "Sign In";
             btn.disabled = false;
+        } else {
+            // Successful login
+            console.log("User logged in:", data.user);
+            localStorage.setItem("user", JSON.stringify(data.user));
+            location.href = "dashboard.html"; // redirect to dashboard
         }
-    })
-    .catch(err => {
+    } catch (err) {
         console.error(err);
+        alert("Unexpected error occurred. Try again.");
         btn.innerHTML = "Sign In";
         btn.disabled = false;
-        alert("Server connection error");
-    });
+    }
 }
 </script>
 
